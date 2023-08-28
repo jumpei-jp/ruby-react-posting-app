@@ -13,4 +13,16 @@ users = [
 
 users.each do |name, age, hobby| 
   User.create(name: name, age: age, hobby: hobby)
+
+end
+
+  test_users = [
+    ["たけし", 20, "サッカー"], 
+    ["さおり", 23, "バレー"], 
+    ["たろう", 22, "野球"]
+  ]
+
+  test_users.each do |name, age, hobby| 
+    TestUser.create(name: name, age: age, hobby: hobby)
+
 end
