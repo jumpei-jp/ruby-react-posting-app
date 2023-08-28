@@ -14,7 +14,7 @@ const ApiFetchTest = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:3001/users', {method: 'GET'})
+        fetch('http://localhost:3001/test-users', {method: 'GET'})
         .then(res => res.json())
         .then(data => {
             setPosts(data.users)

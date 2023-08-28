@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
-import ApiFetchTest from "../components/ApiFetch";
+import ApiFetchTest from "../components/ApiFetchTest";
 import { NotFound } from "../components/pages/NotFound";
 
 export const Router: FC = () => {
