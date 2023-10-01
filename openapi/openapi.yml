@@ -1,11 +1,15 @@
 openapi: 3.0.0
 info:
-  title: Simple User API
-  description: A simple API to retrieve user information.
+  title: 投稿アプリAPI
   version: 1.0.0
 
 paths:
-  /users/{userId}:
+  /v1/users:
+    get:
+      description: ユーザー一覧
+    post:
+      description: ユーザー作成
+  /v1/users/{userId}:
     get:
       summary: Retrieve user information by ID
       description: Retrieve user information by providing a unique user ID.
@@ -33,6 +37,12 @@ paths:
                   email:
                     type: string
                     format: email
+                  created_at:
+                    type: string
+                    format: date
+                  updated_at:
+                    type: string
+                    format: date
         "404":
           description: User not found.
           content:
@@ -42,3 +52,43 @@ paths:
                 properties:
                   message:
                     type: string
+  /v1/login:
+    post:
+      description: ログイン
+  /v1/logout:
+  /v1/posts:
+    get:
+      description: 投稿一覧取得
+      responses:
+        "200":
+          description: Post information retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                  user_id:
+                    type: integer
+                    format: int64
+                  title:
+                    type: string
+                    example: "タイトル"
+                  content:
+                    type: string
+                    example: "内容"
+                  created_at:
+                    type: string
+                    format: date
+                  updated_at:
+                    type: string
+                    format: date
+    post:
+      description: 投稿作成
+  /v1/posts/{postId}:
+    get:
+      description: 投稿詳細
+    put:
+      description: 投稿の編集
