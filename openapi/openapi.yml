@@ -115,7 +115,30 @@ paths:
     post:
       tags:
         - auth
-      description: ログイン
+      security: [ ]
+      description: "ログインする"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mail:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+                  minLength: 8
+                  maxLength: 256
+              required:
+                - mail
+                - password
+      responses:
+        "201":
+          $ref: "#/components/responses/Authorized"
+        "400":
+          $ref: "#/components/responses/BadRequest"
   /v1/posts:
     get:
       tags:
