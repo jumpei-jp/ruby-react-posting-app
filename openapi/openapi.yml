@@ -190,11 +190,25 @@ paths:
         "400":
           $ref: "#/components/responses/BadRequest"
   /v1/posts/{postId}:
-    get:
-      tags:
-        - post
-      description: 投稿詳細
-      responses:
+    # get:
+    #   tags:
+    #     - post
+    #   description: 投稿詳細
+    #   responses:
+    #     "200":
+    #       description: Post
+    #       content:
+    #         application/json:
+    #           schema:
+    #             type: object
+    #             properties:
+    #               title:
+    #                 type: string
+    #                 example: 'タイトル'
+    #               content:
+    #                 type: string
+    #                 example: '内容'
+
     put:
       tags:
         - post
