@@ -148,28 +148,10 @@ paths:
         "200":
           description: Post information retrieved successfully.
           content:
-            application/json:
+            "application/json":
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    format: int64
-                  user_id:
-                    type: integer
-                    format: int64
-                  title:
-                    type: string
-                    example: "タイトル"
-                  content:
-                    type: string
-                    example: "内容"
-                  created_at:
-                    type: string
-                    format: date
-                  updated_at:
-                    type: string
-                    format: date
+                allOf:
+                  - $ref: "#/components/schemas/posts"
     post:
       tags:
         - post
@@ -263,6 +245,46 @@ components:
       required: true
       schema:
         type: number
+  schemas:
+    post:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+          example: "タイトル"
+        content:
+          type: string
+          example: "内容"
+        created_at:
+          type: string
+          format: date
+        updated_at:
+          type: string
+          format: date
+        user:
+          $ref: "#/components/schemas/user"
+    posts:
+      type: object
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: "#/components/schemas/post"
+      required:
+        - users
+    user:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        profile_path:
+          type: string
+
   responses:
     Authorized:
       description: "認証成功"
