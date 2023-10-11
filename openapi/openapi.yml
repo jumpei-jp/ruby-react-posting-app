@@ -46,6 +46,8 @@ paths:
 
   /v1/users/{userId}:
     get:
+      tags:
+        - user
       summary: ユーザー詳細
       description: Retrieve user information by providing a unique user ID.
       parameters:
@@ -92,10 +94,13 @@ paths:
                     example: '404 Not Found'
   /v1/login:
     post:
+      tags:
+        - auth
       description: ログイン
-  /v1/logout:
   /v1/posts:
     get:
+      tags:
+        - post
       description: 投稿一覧取得
       responses:
         "200":
@@ -124,6 +129,8 @@ paths:
                     type: string
                     format: date
     post:
+      tags:
+        - post
       summary: "投稿作成"
       description: 投稿作成
       requestBody:
@@ -160,9 +167,13 @@ paths:
           $ref: "#/components/responses/BadRequest"
   /v1/posts/{postId}:
     get:
+      tags:
+        - post
       description: 投稿詳細
       responses:
     put:
+      tags:
+        - post
       description: 投稿の編集
       responses:
 components:
