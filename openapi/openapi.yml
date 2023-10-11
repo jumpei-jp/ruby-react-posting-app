@@ -217,8 +217,52 @@ paths:
       tags:
         - post
       description: 投稿の編集
+      parameters:
+        - $ref: "#/components/parameters/postId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: 'タイトル'
+                content:
+                  type: string
+                  example: '内容'
       responses:
+        "201":
+          description: Success
+          content:
+            "application/json":
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                    example: '投稿タイトル'
+                  content:
+                    type: string
+                    example: '内容'
+                required:
+                  - title
+                  - content
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "400":
+          $ref: "#/components/responses/BadRequest"
 components:
+  parameters:
+    postId:
+      in: path
+      name: postId
+      description: "投稿ID"
+      required: true
+      schema:
+        type: number
   responses:
     Authorized:
       description: "認証成功"
