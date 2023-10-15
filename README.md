@@ -44,3 +44,8 @@ http://localhost:3000/
 
 dbに入る
 `mysql -hlocalhost -p -uroot`
+
+## RuboCop
+
+pushする前に実行する
+`bundle exec rubocop`
